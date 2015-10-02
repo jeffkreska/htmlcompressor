@@ -274,19 +274,20 @@
   <!-- ====================================================================== -->
   <!-- Environment Settings                                                   -->
   <!-- ====================================================================== -->
-  <issueManagement>
-    <system>Google Code - Issue Tracking</system>
-    <url>http://code.google.com/p/htmlcompressor/issues/list</url>
-  </issueManagement>
+  <!--<issueManagement>-->
+    <!--<system>Google Code - Issue Tracking</system>-->
+    <!--<url>http://code.google.com/p/htmlcompressor/issues/list</url>-->
+  <!--</issueManagement>-->
   <scm>
-    <connection>scm:svn:http://htmlcompressor.googlecode.com/svn/trunk/</connection>
-    <developerConnection>scm:svn:https://htmlcompressor.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://code.google.com/p/htmlcompressor/source/browse/</url>
+    <connection>scm:git:git@github.com:jeffkreska/htmlcomponents.git</connection>
+    <url>scm:git:git@github.com:jeffkreska/htmlcomponents.git</url>
+    <developerConnection>scm:git:git@github.com:jeffkreska/htmlcomponents.git</developerConnection>
   </scm>
 
   <!-- ====================================================================== -->
   <!-- Profile Settings                                                       -->
   <!-- ====================================================================== -->
+<!--
   <profiles>
     <profile>
       <id>release-sign-artifacts</id>
@@ -319,7 +320,7 @@
       <id>doc-folder-generation</id>
       <build>
         <plugins>
-          <!-- Copy javadocs -->
+          &lt;!&ndash; Copy javadocs &ndash;&gt;
 		  <plugin>
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>2.5</version>
@@ -345,4 +346,5 @@
       </build>
     </profile>
   </profiles>
+-->
 </project>
