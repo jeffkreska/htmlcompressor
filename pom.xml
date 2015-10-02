@@ -1,18 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
 
   <!-- ====================================================================== -->
   <!-- Basic Information                                                      -->
   <!-- ====================================================================== -->
   <groupId>com.googlecode.htmlcompressor</groupId>
   <artifactId>htmlcompressor</artifactId>
-  <version>1.6</version>
+  <version>1.6.1</version>
   <packaging>jar</packaging>
   
   <!-- ====================================================================== -->
@@ -347,4 +341,15 @@
     </profile>
   </profiles>
 -->
+  <distributionManagement>
+    <repository>
+      <id>thirdparty</id>
+      <url>http://maven/content/repositories/thirdparty</url>
+    </repository>
+    <snapshotRepository>
+      <id>Snapshots</id>
+      <url>http://maven/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
