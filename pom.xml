@@ -95,7 +95,7 @@
           -->
           <scmCommentPrefix>[maven-jgitflow]</scmCommentPrefix>
           <scmCommentSuffix>[maven-jgitflow]</scmCommentSuffix>
-          <noDeploy>true</noDeploy>
+          <noDeploy>false</noDeploy>
           <flowInitContext>
             <masterBranchName>master</masterBranchName>
             <developBranchName>develop</developBranchName>
@@ -347,4 +347,15 @@
     </profile>
   </profiles>
 -->
+  <distributionManagement>
+    <repository>
+      <id>thirdparty</id>
+      <url>http://maven/content/repositories/thirdparty</url>
+    </repository>
+    <snapshotRepository>
+      <id>Snapshots</id>
+      <url>http://maven/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
