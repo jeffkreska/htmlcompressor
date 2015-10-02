@@ -19,13 +19,14 @@ import com.google.common.io.ByteStreams;
 import com.google.javascript.jscomp.CompilationLevel;
 import com.google.javascript.jscomp.Compiler;
 import com.google.javascript.jscomp.CompilerOptions;
-import com.google.javascript.jscomp.SourceFile;
 import com.google.javascript.jscomp.Result;
+import com.google.javascript.jscomp.SourceFile;
 import com.google.javascript.jscomp.WarningLevel;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,7 +69,7 @@ public class ClosureJavaScriptCompressor implements Compressor {
 		
 		//prepare source
 		List<SourceFile> input = new ArrayList<SourceFile>();
-		input.add(SourceFile.fromCode("source.js", source));
+		input.add( SourceFile.fromCode( "source.js", source ));
 		
 		//prepare externs
 		List<SourceFile> externsList = new ArrayList<SourceFile>();
@@ -123,7 +124,7 @@ public class ClosureJavaScriptCompressor implements Compressor {
 		List<SourceFile> externs = Lists.newLinkedList();
 		for (ZipEntry entry = null; (entry = zip.getNextEntry()) != null;) {
 			InputStream entryStream = ByteStreams.limit( new ZipInputStream(zip), entry.getSize());
-			externs.add(SourceFile.fromInputStream(entry.getName(), entryStream));
+			externs.add(SourceFile.fromInputStream( entry.getName(), entryStream, Charset.defaultCharset() ));
 		}
 		return externs;
 	}

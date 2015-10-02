@@ -384,7 +384,7 @@ public class CmdLineCompressor {
 				if(closureExternsOpt.size() > 0) {
 					List<SourceFile> externs = new ArrayList<SourceFile>();
 					for(String externFile : closureExternsOpt) {
-						externs.add(SourceFile.fromFile(externFile));
+						externs.add( SourceFile.fromFile( externFile ));
 					}
 					closureCompressor.setExterns(externs);
 				}
