@@ -1,13 +1,16 @@
 package com.googlecode.htmlcompressor.compressor;
 
-import static org.junit.Assert.assertEquals;
+import com.google.javascript.jscomp.CompilationLevel;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
@@ -15,11 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.javascript.jscomp.CompilationLevel;
+import static org.junit.Assert.assertEquals;
 
 public class HtmlCompressorTest {
 	
@@ -292,7 +291,8 @@ public class HtmlCompressorTest {
 		
 		StringBuilder builder = new StringBuilder();
 		try {
-			FileInputStream stream = new FileInputStream(new File(resPath + filename));
+			InputStream stream = getClass().getClassLoader().getResourceAsStream( "html/" +filename );
+//			FileInputStream stream = new FileInputStream(new File(resPath + filename));
 			try {
 				Reader reader = new BufferedReader(new InputStreamReader(stream));
 				

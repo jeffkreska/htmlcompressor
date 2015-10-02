@@ -14,6 +14,13 @@ package com.googlecode.htmlcompressor;
  * limitations under the License.
  */
 
+import com.google.javascript.jscomp.CompilationLevel;
+import com.google.javascript.jscomp.SourceFile;
+import com.googlecode.htmlcompressor.analyzer.HtmlAnalyzer;
+import com.googlecode.htmlcompressor.compressor.ClosureJavaScriptCompressor;
+import com.googlecode.htmlcompressor.compressor.Compressor;
+import com.googlecode.htmlcompressor.compressor.HtmlCompressor;
+import com.googlecode.htmlcompressor.compressor.XmlCompressor;
 import jargs.gnu.CmdLineParser;
 import jargs.gnu.CmdLineParser.Option;
 import jargs.gnu.CmdLineParser.OptionException;
@@ -38,14 +45,6 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-
-import com.google.javascript.jscomp.CompilationLevel;
-import com.google.javascript.jscomp.JSSourceFile;
-import com.googlecode.htmlcompressor.analyzer.HtmlAnalyzer;
-import com.googlecode.htmlcompressor.compressor.ClosureJavaScriptCompressor;
-import com.googlecode.htmlcompressor.compressor.Compressor;
-import com.googlecode.htmlcompressor.compressor.HtmlCompressor;
-import com.googlecode.htmlcompressor.compressor.XmlCompressor;
 
 /**
  * Wrapper for HTML and XML compressor classes that allows using them from a command line.
@@ -383,9 +382,9 @@ public class CmdLineCompressor {
 				
 				//get externs
 				if(closureExternsOpt.size() > 0) {
-					List<JSSourceFile> externs = new ArrayList<JSSourceFile>();
+					List<SourceFile> externs = new ArrayList<SourceFile>();
 					for(String externFile : closureExternsOpt) {
-						externs.add(JSSourceFile.fromFile(externFile));
+						externs.add(SourceFile.fromFile(externFile));
 					}
 					closureCompressor.setExterns(externs);
 				}
@@ -650,7 +649,6 @@ public class CmdLineCompressor {
 			}
 		}
 		
-		@Override
 		public boolean accept(File file) {
 			if(!withDirs) {
 				//take only matching non-dirs
