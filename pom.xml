@@ -89,7 +89,7 @@
           -->
           <scmCommentPrefix>[maven-jgitflow]</scmCommentPrefix>
           <scmCommentSuffix>[maven-jgitflow]</scmCommentSuffix>
-          <noDeploy>false</noDeploy>
+          <noDeploy>true</noDeploy>
           <flowInitContext>
             <masterBranchName>master</masterBranchName>
             <developBranchName>develop</developBranchName>
