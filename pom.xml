@@ -12,7 +12,7 @@
   <!-- ====================================================================== -->
   <groupId>com.googlecode.htmlcompressor</groupId>
   <artifactId>htmlcompressor</artifactId>
-  <version>1.5.3-SNAPSHOT</version>
+  <version>1.6</version>
   <packaging>jar</packaging>
   
   <!-- ====================================================================== -->
@@ -22,7 +22,7 @@
     <dependency>
       <groupId>com.google.javascript</groupId>
       <artifactId>closure-compiler</artifactId>
-      <version>r1043</version>
+      <version>v20150609</version>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -65,6 +65,48 @@
     <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
       <!-- Check Prerequisites -->
+      <plugin>
+        <groupId>external.atlassian.jgitflow</groupId>
+        <artifactId>jgitflow-maven-plugin</artifactId>
+        <version>1.0-m5.1</version>
+        <configuration>
+          <!-- Enable this to push to origin using SSH keys -->
+          <enableSshAgent>true</enableSshAgent>
+          <!-- Keep your maven submodules at the same version as the parent POM -->
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <!--
+            Pusing in-development features to origin allows all devs to see what each other
+            are working on
+          -->
+          <pushFeatures>false</pushFeatures>
+          <!--
+            This allows the CI server (e.g. Jenkins) to automatically push new releases to
+            origin; you can then either manually deploy them or, if you are doing Continuous
+            Deployments, auto-deploy them to prod
+          -->
+          <pushReleases>false</pushReleases>
+          <!--
+            Hot Fixes should be pushed to origin as well so that any dev can pick them up
+          -->
+          <pushHotfixes>false</pushHotfixes>
+          <!--
+            Prevents deployments from dev workstations so that they can be done by a CI
+            server
+          -->
+          <scmCommentPrefix>[maven-jgitflow]</scmCommentPrefix>
+          <scmCommentSuffix>[maven-jgitflow]</scmCommentSuffix>
+          <noDeploy>true</noDeploy>
+          <flowInitContext>
+            <masterBranchName>master</masterBranchName>
+            <developBranchName>develop</developBranchName>
+            <featureBranchPrefix>feature/</featureBranchPrefix>
+            <releaseBranchPrefix>release/</releaseBranchPrefix>
+            <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+            <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
+          </flowInitContext>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -232,19 +274,20 @@
   <!-- ====================================================================== -->
   <!-- Environment Settings                                                   -->
   <!-- ====================================================================== -->
-  <issueManagement>
-    <system>Google Code - Issue Tracking</system>
-    <url>http://code.google.com/p/htmlcompressor/issues/list</url>
-  </issueManagement>
+  <!--<issueManagement>-->
+    <!--<system>Google Code - Issue Tracking</system>-->
+    <!--<url>http://code.google.com/p/htmlcompressor/issues/list</url>-->
+  <!--</issueManagement>-->
   <scm>
-    <connection>scm:svn:http://htmlcompressor.googlecode.com/svn/trunk/</connection>
-    <developerConnection>scm:svn:https://htmlcompressor.googlecode.com/svn/trunk/</developerConnection>
-    <url>http://code.google.com/p/htmlcompressor/source/browse/</url>
+    <connection>scm:git:git@github.com:jeffkreska/htmlcomponents.git</connection>
+    <url>scm:git:git@github.com:jeffkreska/htmlcomponents.git</url>
+    <developerConnection>scm:git:git@github.com:jeffkreska/htmlcomponents.git</developerConnection>
   </scm>
 
   <!-- ====================================================================== -->
   <!-- Profile Settings                                                       -->
   <!-- ====================================================================== -->
+<!--
   <profiles>
     <profile>
       <id>release-sign-artifacts</id>
@@ -277,7 +320,7 @@
       <id>doc-folder-generation</id>
       <build>
         <plugins>
-          <!-- Copy javadocs -->
+          &lt;!&ndash; Copy javadocs &ndash;&gt;
 		  <plugin>
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>2.5</version>
@@ -303,4 +346,5 @@
       </build>
     </profile>
   </profiles>
+-->
 </project>
